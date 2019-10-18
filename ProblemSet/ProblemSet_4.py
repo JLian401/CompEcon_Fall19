@@ -118,9 +118,9 @@ def obj_func_1(Theta):
     alpha, beta = Theta
 
     def payoff_1(index,data):
-        payoff = data.at[index,"num_stations_buyer"] *
-        data.at[index,"population_target"] + alpha *
-        data.at[index,"corp_owner_buyer"] *
+        payoff = data.at[index,"num_stations_buyer"]*\
+        data.at[index,"population_target"] + alpha*\
+        data.at[index,"corp_owner_buyer"]*\
         data.at[index,"population_target"] + beta*data.at[index,"distance"]
         return payoff
 
@@ -137,8 +137,8 @@ def obj_func_1(Theta):
             if i == j:
                 pass
             else:
-                if (payoff_1(ind_o_i,df_o_2007) + payoff_1(ind_o_j,df_o_2007)) >
-                 (payoff_1(ind_f_i,df_f_2007) + payoff_1(ind_f_j,df_f_2007)):
+                if (payoff_1(ind_o_i,df_o_2007) + payoff_1(ind_o_j,df_o_2007)) \
+                > (payoff_1(ind_f_i,df_f_2007) + payoff_1(ind_f_j,df_f_2007)):
                     score_2007 += 1
                 else:
                     pass
@@ -156,8 +156,8 @@ def obj_func_1(Theta):
             if i == j:
                 pass
             else:
-                if (payoff_1(ind_o_i,df_o_2008) + payoff_1(ind_o_j,df_o_2008)) >
-                (payoff_1(ind_f_i,df_f_2008) + payoff_1(ind_f_j,df_f_2008)):
+                if (payoff_1(ind_o_i,df_o_2008) + payoff_1(ind_o_j,df_o_2008)) \
+                > (payoff_1(ind_f_i,df_f_2008) + payoff_1(ind_f_j,df_f_2008)):
                     score_2008 += 1
                 else:
                     pass
@@ -182,10 +182,10 @@ def obj_func_2(Sigma):
     delta,alpha,gamma,beta = Sigma
 
     def payoff_2(index,data):
-        payoff = delta * data.at[index,"num_stations_buyer"] *
-        data.at[index,"population_target"] + alpha *
-        data.at[index,"corp_owner_buyer"] * data.at[index,"population_target"] +
-        beta*data.at[index,"distance"] + gamma * data.at[index,"hhi_target"]
+        payoff = delta * data.at[index,"num_stations_buyer"]*\
+        data.at[index,"population_target"] + alpha*\
+        data.at[index,"corp_owner_buyer"] * data.at[index,"population_target"]
+        + beta*data.at[index,"distance"] + gamma * data.at[index,"hhi_target"]
         return payoff
 
     # calculate payoff in different market, 2007 and 2008
@@ -201,8 +201,8 @@ def obj_func_2(Sigma):
             if i == j:
                 pass
             else:
-                if (payoff_2(ind_o_i,df_o_2007) + payoff_2(ind_o_j,df_o_2007)) >
-                (payoff_2(ind_f_i,df_f_2007) + payoff_2(ind_f_j,df_f_2007)):
+                if (payoff_2(ind_o_i,df_o_2007) + payoff_2(ind_o_j,df_o_2007)) \
+                > (payoff_2(ind_f_i,df_f_2007) + payoff_2(ind_f_j,df_f_2007)):
                     score_2007 += 1
                 else:
                     pass
@@ -220,8 +220,8 @@ def obj_func_2(Sigma):
             if i == j:
                 pass
             else:
-                if (payoff_2(ind_o_i,df_o_2008) + payoff_2(ind_o_j,df_o_2008)) >
-                (payoff_2(ind_f_i,df_f_2008) + payoff_2(ind_f_j,df_f_2008)):
+                if (payoff_2(ind_o_i,df_o_2008) + payoff_2(ind_o_j,df_o_2008)) \
+                > (payoff_2(ind_f_i,df_f_2008) + payoff_2(ind_f_j,df_f_2008)):
                     score_2008 += 1
                 else:
                     pass
@@ -230,7 +230,7 @@ def obj_func_2(Sigma):
     return inv_total
 
 
-# Use Nelder-Meade method to calculate maximum. Failed. 
+# Use Nelder-Meade method to calculate maximum. Failed.
 
 import scipy.optimize as opt
 from scipy.optimize import differential_evolution
